@@ -13,7 +13,8 @@ public class Bullet_Controller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        screen_bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        screen_bounds =
+            Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
     // Update is called once per frame
