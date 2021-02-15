@@ -34,6 +34,11 @@ namespace CustomInput
             return Instance.keybindings.CheckKey(1, map).ToString();
         }
 
+        public static bool IsKeyPressed(string map)
+        {
+            return Input.GetKey(Instance.keybindings.CheckKey(1, map));
+        }
+
         public static void SetKey(string map, KeyCode keyCode)
         {
             Instance.keybindings.SetKeybind(1, map, keyCode);
