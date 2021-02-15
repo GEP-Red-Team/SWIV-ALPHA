@@ -27,17 +27,23 @@ public class PlayerController : MonoBehaviour
 
     private int currentBulletIndex = 0;
 
+    public delegate void OnPlayerHitDelegate();
+    public event OnPlayerHitDelegate OnPlayerHitCallback;
+
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
 
+        // Get screen extents.
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
+        // Get mesh extents.
         Mesh mesh = transform.GetComponent<MeshFilter>().mesh;
         objectWidth = mesh.bounds.extents.x;
         objectHeight = mesh.bounds.extents.y;
 
+        // Initialize bullet pool.
         for(int i = 0; i < bulletPoolSize; i++)
         {
             bulletPool.Add(Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity));
@@ -106,7 +112,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.CompareTag("Bullet"))
         {
-
+            OnPlayerHitCallback();
         }
     }
 }

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3575387633582173389}
   - component: {fileID: 2765141716581149325}
   - component: {fileID: 2765141716581149324}
+  - component: {fileID: 5673324503453212040}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
+  m_Name: PF_Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,3 +121,16 @@ MonoBehaviour:
     type: 3}
   bulletPool: []
   bulletPoolSize: 10
+--- !u!65 &5673324503453212040
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071077178785582360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999999, y: 0.80000013, z: 2.1000004}
+  m_Center: {x: 0, y: 0.40000007, z: 0}

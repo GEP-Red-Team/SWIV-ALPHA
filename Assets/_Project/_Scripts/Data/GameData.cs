@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Data
 {
@@ -21,5 +22,9 @@ namespace Data
         
         [SerializeField] private bool gunPowerUp = false;
         [SerializeField] private bool shieldPowerUp = false;
+
+        [Header("USER INTERFACE")]
+        [SerializeField] public Text livesText = null;
+        [SerializeField] public Text scoreText = null;
     }
 }
