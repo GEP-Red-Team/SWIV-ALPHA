@@ -553,6 +553,7 @@ MonoBehaviour:
   gunPowerUp: 0
   shieldPowerUp: 0
   livesText: {fileID: 873100135}
+  scoreText: {fileID: 1755735055}
 --- !u!114 &1153548671
 MonoBehaviour:
   m_ObjectHideFlags: 0
