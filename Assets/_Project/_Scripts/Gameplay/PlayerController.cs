@@ -2,6 +2,79 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Shields will be spawned into the scene under certain conditions:
+// - Enemy defeated?
+// - On timer?
+// - Pickup locations?
+public class ShieldPowerup
+{
+    private float activeLifetime = 15f;
+
+    private bool active = false;
+    private float madeActiveTime = 0f;
+    private float remainingHits = 0;
+    private GameObject shieldGameObject;
+    private GameObject playerGameObject;
+
+    public ShieldPowerup(GameObject shieldObject, float shieldObjectScale, GameObject playerObject)
+    {
+        playerGameObject = playerObject;
+
+        shieldGameObject = shieldObject;
+        shieldGameObject.SetActive(false);
+        shieldGameObject.transform.localScale = new Vector3(shieldObjectScale, shieldObjectScale, shieldObjectScale);
+    }
+
+    public void Activate()
+    {
+        active = true;
+        madeActiveTime = Time.time;
+        remainingHits = 4;
+        shieldGameObject.SetActive(true);
+    }
+
+    public void Deactivate()
+    {
+        active = false;
+        shieldGameObject.SetActive(false);
+    }
+
+    public void Update()
+    {
+        if(active)
+        {
+            if(GetElapsedTimeSinceActivated() >= activeLifetime)
+            {
+                Deactivate();
+            }
+        }
+    }
+
+    public void LateUpdate()
+    {
+        shieldGameObject.transform.position = playerGameObject.transform.position;
+    }
+
+    public void OnHit()
+    {
+        remainingHits--;
+        if (remainingHits == 0)
+        {
+            Deactivate();
+        }
+    }
+
+    public bool IsActive()
+    {
+        return active;
+    }
+
+    private float GetElapsedTimeSinceActivated()
+    {
+        return Time.time - madeActiveTime;
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
@@ -12,8 +85,13 @@ public class PlayerController : MonoBehaviour
     public float bulletSpeed = 30f;
     public GameObject bulletPrefab = null;
 
-    public List<GameObject> bulletPool = new List<GameObject>();
+    private List<GameObject> bulletPool = new List<GameObject>();
     public int bulletPoolSize = 10;
+
+    public delegate void OnPlayerHitDelegate();
+    public event OnPlayerHitDelegate OnPlayerHitCallback;
+
+    public float shieldPowerupObjectScale = 2.5f;
 
     private Rigidbody rb;
     private Vector2 direction;
@@ -27,8 +105,12 @@ public class PlayerController : MonoBehaviour
 
     private int currentBulletIndex = 0;
 
-    public delegate void OnPlayerHitDelegate();
-    public event OnPlayerHitDelegate OnPlayerHitCallback;
+    // This is an example of one powerup, but to support multiple powerups "equipped" on the player should be achievable.
+    // Use an array of powerup objects that can be added and removed as they are picked up in game.
+    private ShieldPowerup shieldPowerup = null;
+    public GameObject shieldPowerupGameObject = null;
+
+    private const float BULLET_SPAWN_DISTANCE_FROM_PLAYER = 1.5f;
 
     // Start is called before the first frame update
     private void Start()
@@ -49,6 +131,9 @@ public class PlayerController : MonoBehaviour
             bulletPool.Add(Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity));
             bulletPool[i].SetActive(false);
         }
+
+        // Initialize powerups.
+        shieldPowerup = new ShieldPowerup(Instantiate(shieldPowerupGameObject), shieldPowerupObjectScale, gameObject);
     }
 
     // Update is called once per frame
@@ -64,6 +149,9 @@ public class PlayerController : MonoBehaviour
                 Fire();
             }
         }
+
+        // Update powerups.
+        shieldPowerup.Update();
     }
 
     private void FixedUpdate()
@@ -78,6 +166,9 @@ public class PlayerController : MonoBehaviour
         view_pos.x = Mathf.Clamp(view_pos.x, -screenBounds.x + objectWidth, screenBounds.x - objectWidth);
         view_pos.y = Mathf.Clamp(view_pos.y, -screenBounds.y + objectHeight, screenBounds.y - objectHeight);
         transform.position = view_pos;
+
+        // Late update powerups.
+        shieldPowerup.LateUpdate();
     }
 
     private bool CanFire()
@@ -99,7 +190,7 @@ public class PlayerController : MonoBehaviour
         bullet.SetActive(true);
 
         // Put the bullet in front of the player.
-        bullet.transform.position = transform.position + (transform.forward * 1.5f);
+        bullet.transform.position = transform.position + (transform.forward * BULLET_SPAWN_DISTANCE_FROM_PLAYER);
 
         // Set the bullet's velocity.
         bullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
@@ -112,7 +203,18 @@ public class PlayerController : MonoBehaviour
     {
         if(other.CompareTag("Bullet"))
         {
-            OnPlayerHitCallback();
+            if(!shieldPowerup.IsActive())
+            {
+                OnPlayerHitCallback();
+            }
+            else
+            {
+                // Deactivate other bullet. This will work with the enemy's or global bullet pool.
+            }
+        }
+        else if(other.CompareTag("PowerupShield"))
+        {
+            shieldPowerup.Activate();
         }
     }
 }

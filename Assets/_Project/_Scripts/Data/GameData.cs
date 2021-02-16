@@ -20,8 +20,8 @@ namespace Data
         [SerializeField] public int lives = 3;
         [SerializeField] public int currentScore = 0;
         
-        [SerializeField] private bool gunPowerUp = false;
-        [SerializeField] private bool shieldPowerUp = false;
+        //[SerializeField] private bool gunPowerUp = false;
+        //[SerializeField] private bool shieldPowerUp = false;
 
         [Header("USER INTERFACE")]
         [SerializeField] public Text livesText = null;

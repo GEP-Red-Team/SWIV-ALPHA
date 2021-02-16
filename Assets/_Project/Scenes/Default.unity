@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 532137822}
   - component: {fileID: 532137821}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: TempBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,7 +322,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 83801b377df043749a935a2047d2c997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -550,8 +550,6 @@ MonoBehaviour:
   isPaused: 0
   lives: 3
   currentScore: 0
-  gunPowerUp: 0
-  shieldPowerUp: 0
   livesText: {fileID: 873100135}
   scoreText: {fileID: 1755735055}
 --- !u!114 &1153548671
@@ -936,6 +934,12 @@ PrefabInstance:
       propertyPath: fireRate
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 2765141716581149324, guid: 4984bd7ee3f18f9498002d20d8e33bef,
+        type: 3}
+      propertyPath: shieldPowerupGameObject
+      value: 
+      objectReference: {fileID: 3325070593205596340, guid: d0d430e13596bec489a52d0fac80aba9,
+        type: 3}
     - target: {fileID: 3071077178785582360, guid: 4984bd7ee3f18f9498002d20d8e33bef,
         type: 3}
       propertyPath: m_Name

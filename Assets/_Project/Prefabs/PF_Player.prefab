@@ -119,8 +119,9 @@ MonoBehaviour:
   bulletSpeed: 30
   bulletPrefab: {fileID: 1007439657484188023, guid: 872ab848037eba041be7bbbed8c8bbc0,
     type: 3}
-  bulletPool: []
   bulletPoolSize: 10
+  onPlayerShieldPowerup: {fileID: 3325070593205596340, guid: d0d430e13596bec489a52d0fac80aba9,
+    type: 3}
 --- !u!65 &5673324503453212040
 BoxCollider:
   m_ObjectHideFlags: 0
