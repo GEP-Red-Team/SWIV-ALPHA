@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillBox : MonoBehaviour
+public class BackgroundKillBox : MonoBehaviour
 {
     public GameObject controller;
     [SerializeField] private BackgroundController _bC;

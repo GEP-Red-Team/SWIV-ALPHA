@@ -51,6 +51,7 @@ public class BackgroundController : MonoBehaviour
         panel.transform.position = startPosition;
     }
 
+    // Called in BackgroundKillBox script
     public void CollisionDetected(GameObject panel)
     {
         ResetPanel(panel);

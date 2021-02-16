@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class TurretEnemy : IEnemy
 {
-    [SerializeField] private Vector3 newPosition;
     private void Start()
     {
         newPosition = transform.position;

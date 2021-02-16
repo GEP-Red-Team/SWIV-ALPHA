@@ -9,17 +9,11 @@ public class SineWaveEnemy : IEnemy
     [SerializeField] private float frequency = 3.0f;
     [SerializeField] private float magnitude = 1.0f;
     [SerializeField] private float sineSpeed = 1.0f;
-    [SerializeField] private Vector3 startPosition;
-    [SerializeField] private Vector3 newPosition;
-
-    private void Start()
-    {
-        startPosition = transform.position;
-    }
 
     private void OnEnable()
     {
-        startPosition = transform.position;
+        startPosition = this.transform.position;
+        newPosition = startPosition;
     }
 
     private void Update()
