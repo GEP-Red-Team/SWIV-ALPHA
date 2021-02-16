@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d2005923569b54caae08913df7d708, type: 3}
   m_Name: SineWaveEnemyData
   m_EditorClassIdentifier: 
-  type: 
+  type: SineWave
   health: 0
   speed: 0
   attackDamage: 0

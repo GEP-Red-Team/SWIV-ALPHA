@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: bd86beb6fddf99240924d83b55624b70, type: 2}
   - {fileID: 2100000, guid: 78745444760fef84c90a278c9b4ba64a, type: 2}
   panelDimensions: {x: 1.229865, y: 4.996, z: 2.033722}
+  speed: 1
