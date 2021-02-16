@@ -16,19 +16,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9189381175004128630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7242755953178037621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30a5e1a1b825314ab2abd13fbc741b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 06e89d4890dcb2640a2427393f96288d, type: 2}
 --- !u!1001 &5208749210990208177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,6 +88,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: SBackground
       objectReference: {fileID: 0}
+    - target: {fileID: 3227464534854674886, guid: 63530d6b7a0004c42b8d4eb708548ae5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78745444760fef84c90a278c9b4ba64a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63530d6b7a0004c42b8d4eb708548ae5, type: 3}
 --- !u!1 &7242755953178037621 stripped
