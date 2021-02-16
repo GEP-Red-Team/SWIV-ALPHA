@@ -19,8 +19,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        // not yet implemented
-        spawner.Spawn(enemies);
+        spawner.Spawn(ref enemies);
     }
 
     private void InitEnemies()
@@ -47,8 +46,13 @@ public class EnemyController : MonoBehaviour
                 if (j < amount - 1) continue;
                 var type = temp.GetComponent<IEnemy>().Data.type; // name set in data container for enemy -> zack_scrips/data/instances
                 enemies.Add(type, tempList);
-                spawner.HaveSpawned.Add(false);
             }
         }
+    }
+
+
+    private void NextWave()
+    {
+        
     }
 }
