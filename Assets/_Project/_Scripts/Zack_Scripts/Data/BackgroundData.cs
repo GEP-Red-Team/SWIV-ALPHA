@@ -7,4 +7,5 @@ public class BackgroundData : ScriptableObject
 {
     public Material[] materials;
     public Vector3 panelDimensions;
+    public float speed;
 }

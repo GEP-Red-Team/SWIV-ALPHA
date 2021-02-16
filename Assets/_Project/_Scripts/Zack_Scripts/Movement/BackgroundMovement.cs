@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class BackgroundMovement : MonoBehaviour
 {
-    public float scrollSpeed = 10f;
+    [SerializeField] private float speed;
+
+    private void Start()
+    {
+        speed = GameObject.FindWithTag("BackgroundController").GetComponent<BackgroundData>().speed;
+    }
 
     private void Update()
     {
-        transform.Translate(Vector3.back * (scrollSpeed * Time.deltaTime));
+        transform.Translate(Vector3.back * (speed * Time.deltaTime));
     }
 }
