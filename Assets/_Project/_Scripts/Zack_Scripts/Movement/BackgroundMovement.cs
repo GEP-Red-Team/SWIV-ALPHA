@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class BackgroundMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-
+    public BackgroundData data;
     private void Start()
     {
-        speed = GameObject.FindWithTag("BackgroundController").GetComponent<BackgroundData>().speed;
+        
     }
-
     private void Update()
     {
-        transform.Translate(Vector3.back * (speed * Time.deltaTime));
+        transform.Translate(Vector3.back * (data.speed * Time.deltaTime));
     }
 }
