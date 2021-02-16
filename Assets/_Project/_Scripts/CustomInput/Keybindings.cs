@@ -5,16 +5,15 @@ using UnityEngine;
 
 namespace CustomInput
 {
-    [CreateAssetMenu(fileName = "Keybindings", menuName = "Keybindings")]
-    public class Keybindings : ScriptableObject
+    public class Keybindings
     {
         private Dictionary<string, KeyCode> _player1 = new Dictionary<string, KeyCode>();
         private Dictionary<string, KeyCode> _player2 = new Dictionary<string, KeyCode>();
         
-        private void OnEnable()
+        public void Init()
         {
             _player1.Add("shoot",  KeyCode.Space);
-            _player1.Add("select", KeyCode.Joystick1Button0);
+            _player1.Add("select", KeyCode.E);
             _player1.Add("pause",  KeyCode.Escape);
             _player1.Add("up",     KeyCode.W);
             _player1.Add("down",   KeyCode.S);

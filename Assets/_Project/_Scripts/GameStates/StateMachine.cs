@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Data;
+using Random = UnityEngine.Random;
 
 namespace GameStates
 {
@@ -11,6 +12,8 @@ namespace GameStates
         
         [SerializeField] private GameData gameData = default;  //Object containing all of the game data
         public GameData GameData { get => gameData; set => gameData = value; }
+        public MenuObjects menuObjects = default;
+        public PauseObjects pauseObjects = default;
 
         private void OnEnable()
         {

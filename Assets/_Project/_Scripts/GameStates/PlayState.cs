@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CustomInput;
+using UnityEngine;
 
 namespace GameStates
 {
@@ -17,7 +18,10 @@ namespace GameStates
 
         public override void Update()
         {
-            
+            if (InputManager.KeyDown("pause"))
+            {
+                Game.OnPause();
+            }
         }
 
         public override void End()
