@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
-
+    
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private int enemySpawnBuffer;
     [SerializeField] private float waveTimer = 5f;

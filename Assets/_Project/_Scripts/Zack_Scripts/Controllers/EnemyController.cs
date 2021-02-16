@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     
-    public GameObject[] enemyPrefabs;
-    public int[] amountOfEnemyType;
+    public GameObject[] enemyPrefabs; // enemy types you want (set manually in inspector)
+    public int[] amountOfEnemyType; // amount of enemy type (set manually in inspector) 
     public Spawner spawner;
 
     [SerializeField] private Dictionary<string, List<GameObject>> enemies;
@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        // not yet implemented
         spawner.Spawn(enemies);
     }
 
@@ -44,7 +45,7 @@ public class EnemyController : MonoBehaviour
                 offset += 1f;
 
                 if (j < amount - 1) continue;
-                var type = temp.GetComponent<IEnemy>().Data.type;
+                var type = temp.GetComponent<IEnemy>().Data.type; // name set in data container for enemy -> zack_scrips/data/instances
                 enemies.Add(type, tempList);
                 spawner.HaveSpawned.Add(false);
             }

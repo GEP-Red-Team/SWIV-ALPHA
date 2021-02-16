@@ -6,10 +6,6 @@ using UnityEngine;
 public class BackgroundMovement : MonoBehaviour
 {
     public BackgroundData data;
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
         transform.Translate(Vector3.back * (data.speed * Time.deltaTime));
