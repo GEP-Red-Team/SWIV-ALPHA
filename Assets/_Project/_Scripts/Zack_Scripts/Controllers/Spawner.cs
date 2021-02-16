@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
     public Transform[] spawnPoints = new Transform[3];  // set to 3 as only 3 spawn points at the moment
     public float waveTime = 5f;                         // used to choose the time to countdown to the next wave
 
-    [SerializeField] private int nextWave;
+    [SerializeField] private int nextWave;              // currently unused
     [SerializeField] private float waveCountdown;
     [SerializeField] private SpawnState state = SpawnState.Countdown;
 
@@ -32,11 +32,10 @@ public class Spawner : MonoBehaviour
     {
         if (waveCountdown <= 0)
         {
-            if (state != SpawnState.Spawning)
-            {
-                StartCoroutine(SpawnWave(enemies, waves[nextWave]));
-                waveCountdown = waveTime;
-            }
+            if (state == SpawnState.Spawning) return;
+            StartCoroutine(SpawnWave(enemies, waves[nextWave]));
+            waveCountdown = waveTime;
+            nextWave++;
         }
         else { waveCountdown -= Time.deltaTime; }
     }
@@ -56,12 +55,11 @@ public class Spawner : MonoBehaviour
             for (var j = 0; j < amount; j++)
             {
                 SpawnEnemy(enemyList[j], spawn);
-
                 yield return new WaitForSeconds(wave.spawnRate);
             }
         }
 
-        state = SpawnState.Wait; // used to stop unnecessary invocation of spawner
+        state = SpawnState.Wait;    // used to stop unnecessary invocation of spawner
     }
 
     private void SpawnEnemy(GameObject enemy, int spawn)

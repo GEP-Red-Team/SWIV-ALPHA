@@ -824,7 +824,15 @@ MonoBehaviour:
   waves:
   - enemyType:
     - SineWave
-    enemyAmount: 02000000
+    enemyAmount: 0200000000000000
+    spawnRate: 1
+  - enemyType:
+    - Turret
+    enemyAmount: 03000000
+    spawnRate: 1
+  - enemyType:
+    - SineWave
+    enemyAmount: 0200000000000000
     spawnRate: 1
   spawnPoints:
   - {fileID: 1386907399}
@@ -848,7 +856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 2526066641752911748, guid: 4c8286387cfe3bb4fa23400540d722a3, type: 3}
-  amountOfEnemyType: 05000000
+  - {fileID: 3936622569428503050, guid: ca57efae5b7bdb848a727447c5920fc6, type: 3}
+  amountOfEnemyType: 0a00000003000000
   spawner: {fileID: 960361738}
   enemyCheckTimer: 2
 --- !u!1 &963194225
