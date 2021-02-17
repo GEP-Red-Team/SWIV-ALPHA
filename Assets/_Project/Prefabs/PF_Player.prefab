@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3071077178785582360}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.38, y: 0.38, z: 0.38}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -120,8 +120,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1007439657484188023, guid: 872ab848037eba041be7bbbed8c8bbc0,
     type: 3}
   bulletPoolSize: 10
-  onPlayerShieldPowerup: {fileID: 3325070593205596340, guid: d0d430e13596bec489a52d0fac80aba9,
-    type: 3}
+  shieldPowerupObjectScale: 2.5
+  shieldPowerupGameObject: {fileID: 0}
 --- !u!65 &5673324503453212040
 BoxCollider:
   m_ObjectHideFlags: 0

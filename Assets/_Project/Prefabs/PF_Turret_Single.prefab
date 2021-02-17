@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 3287994065592642527}
   - component: {fileID: 4206600161473299217}
   - component: {fileID: 7886993083241278670}
+  - component: {fileID: -4255161243536269152}
   m_Layer: 0
   m_Name: PF_Turret_Single
   m_TagString: Enemy
@@ -193,6 +194,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.60000026, y: 0.61, z: 0.60000014}
   m_Center: {x: 4.9737986e-15, y: 0.32, z: 0.00000004172325}
+--- !u!114 &-4255161243536269152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936622569428503050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3fb6320645c8ad449988a6b5072767e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 319c13a608e00884e906428086b0aad4, type: 2}
+  id: 0
+  offset: 0
+  startPosition: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &6977538928571391897
 GameObject:
   m_ObjectHideFlags: 0

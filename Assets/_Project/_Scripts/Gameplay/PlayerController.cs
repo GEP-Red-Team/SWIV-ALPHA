@@ -91,7 +91,8 @@ public class PlayerController : MonoBehaviour
     public delegate void OnPlayerHitDelegate();
     public event OnPlayerHitDelegate OnPlayerHitCallback;
 
-    public float shieldPowerupObjectScale = 2.5f;
+    public float shieldPowerupObjectScaleOnPlayer = 2.5f;
+    public float shieldPowerupObjectScaleInScene = 0.75f;
 
     private Rigidbody rb;
     private Vector2 direction;
@@ -110,7 +111,28 @@ public class PlayerController : MonoBehaviour
     private ShieldPowerup shieldPowerup = null;
     public GameObject shieldPowerupGameObject = null;
 
+    private GameStates.PlayState playState;
+
     private const float BULLET_SPAWN_DISTANCE_FROM_PLAYER = 1.5f;
+    private const int ENEMY_SCORE_VALUE = 500;
+
+    public void OnShotEnemy(Transform transform)
+    {
+        playState.AddPlayerScore(ENEMY_SCORE_VALUE);
+
+        // Should a powerup be dropped?
+        if (Random.Range(0,3) == 1)
+        {
+            // Which powerup should be dropped? There is only one implemented currently but a decision could be made here.
+            GameObject powerup = Instantiate(shieldPowerupGameObject, transform.position, Quaternion.identity);
+            powerup.transform.localScale = new Vector3(shieldPowerupObjectScaleInScene, shieldPowerupObjectScaleInScene, shieldPowerupObjectScaleInScene);
+        }
+    }
+
+    public void SetPlayState(GameStates.PlayState state)
+    {
+        playState = state;
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -129,11 +151,13 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < bulletPoolSize; i++)
         {
             bulletPool.Add(Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity));
+            //bulletPool[i].transform.localScale = transform.localScale; // Bullet scale is applied seperately in the bullet prefab.
+            bulletPool[i].GetComponent<BulletController>().OnEnemyShot += OnShotEnemy;
             bulletPool[i].SetActive(false);
         }
 
         // Initialize powerups.
-        shieldPowerup = new ShieldPowerup(Instantiate(shieldPowerupGameObject), shieldPowerupObjectScale, gameObject);
+        shieldPowerup = new ShieldPowerup(Instantiate(shieldPowerupGameObject), transform.localScale.x * shieldPowerupObjectScaleOnPlayer, gameObject);
     }
 
     // Update is called once per frame
@@ -201,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Bullet"))
+        if(other.CompareTag("Bullet") || other.CompareTag("Enemy"))
         {
             if(!shieldPowerup.IsActive())
             {
@@ -212,9 +236,10 @@ public class PlayerController : MonoBehaviour
                 // Deactivate other bullet. This will work with the enemy's or global bullet pool.
             }
         }
-        else if(other.CompareTag("PowerupShield"))
+        else if(other.CompareTag("PowerupShield") && !shieldPowerup.IsActive())
         {
             shieldPowerup.Activate();
+            Destroy(other.gameObject);
         }
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    public delegate void OnEnemyShotDelegate(Transform transform);
+    public event OnEnemyShotDelegate OnEnemyShot;
+
     private Rigidbody rb;
     private Vector2 screenBounds;
 
@@ -24,5 +27,19 @@ public class BulletController : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            // Deactivate enemy.
+            other.gameObject.SetActive(false);
+
+            // Give player score.
+            OnEnemyShot(other.transform);
+        }
+
+        gameObject.SetActive(false);
     }
 }

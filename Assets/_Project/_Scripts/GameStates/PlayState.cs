@@ -31,10 +31,13 @@ namespace GameStates
             // Get player game object.
             player = GameObject.FindGameObjectWithTag("Player");
 
-            // Register on player hit callback.
+            // Register player callbacks.
             playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             playerController.OnPlayerHitCallback += OnPlayerHit;
 
+            // Set the playstate the player belongs to.
+            playerController.SetPlayState(this);
+            
             UpdateLivesUI();
             UpdateScoreUI();
         }
@@ -71,6 +74,12 @@ namespace GameStates
             {
                 OnGameOver();
             }
+        }
+
+        public void AddPlayerScore(int amount)
+        {
+            Game.GameData.currentScore += amount;
+            UpdateScoreUI();
         }
 
         private void UpdateLivesUI()
