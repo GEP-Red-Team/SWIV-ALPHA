@@ -6,7 +6,7 @@ namespace CustomInput
     {
         public static InputManager Instance;
 
-        [SerializeField] private Keybindings keybindings = default;
+        private Keybindings _keybindings = default;
 
         void Awake()
         {
@@ -26,12 +26,12 @@ namespace CustomInput
         
         public static bool KeyDown(string map)
         {
-            return Input.GetKeyDown(Instance.keybindings.CheckKey(1, map));
+            return Input.GetKeyDown(Instance._keybindings.CheckKey(1, map));
         }
         
         public static string GetKey(string map)
         {
-            return Instance.keybindings.CheckKey(1, map).ToString();
+            return Instance._keybindings.CheckKey(1, map).ToString();
         }
 
         public static bool IsKeyPressed(string map)
@@ -41,13 +41,14 @@ namespace CustomInput
 
         public static void SetKey(string map, KeyCode keyCode)
         {
-            Instance.keybindings.SetKeybind(1, map, keyCode);
+            Instance._keybindings.SetKeybind(1, map, keyCode);
         }
 
         public void RestoreDefault()
         {
             //this makes a new instance so you wont be able to effect it in the editor once used
-            keybindings = ScriptableObject.CreateInstance<Keybindings>();
+            _keybindings = new Keybindings();
+            _keybindings.Init();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CustomInput;
+using UnityEngine;
 
 namespace GameStates
 {
@@ -44,12 +45,18 @@ namespace GameStates
 
         public override void Update()
         {
+<<<<<<< HEAD
             if(checkResetPlayer)
             {
                 if((Time.time - beginResetTime) >= resetDuration)
                 {
                     ResetPlayer();
                 }
+=======
+            if (InputManager.KeyDown("pause"))
+            {
+                Game.OnPause();
+>>>>>>> c2cef5784c5d07b0f559e6cc51aecf08d9e0f235
             }
         }
 

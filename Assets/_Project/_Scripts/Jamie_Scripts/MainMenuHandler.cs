@@ -41,7 +41,6 @@ public class MainMenuHandler : MonoBehaviour
         {
             rotateSprites();
         }
-        
     }
     private void rotateSprites()
     {
