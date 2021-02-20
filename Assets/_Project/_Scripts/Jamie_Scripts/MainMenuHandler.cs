@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuHandler : MonoBehaviour
 {
+    public delegate void OnPlayClicked();
+    public event OnPlayClicked OnPlayClickedCallback;
 
     public GameObject Sprite1 = null;
     public GameObject Sprite2 = null;
@@ -21,8 +23,7 @@ public class MainMenuHandler : MonoBehaviour
     }
     public void OnPlayButton()
     {
-        // load game
-        Debug.Log("Load Game");
+        OnPlayClickedCallback();
     }
     public void OnQuitButton()
     {

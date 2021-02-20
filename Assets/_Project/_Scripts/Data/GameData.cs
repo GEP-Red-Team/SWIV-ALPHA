@@ -9,6 +9,7 @@ namespace Data
     {
         [Header("SCENE OBJECTS")]
         public GameObject playstateObjects;
+        public GameObject mainMenuObjects;
 
         [Header("GAME INFO")]
         [SerializeField] private GameMode gameMode = GameMode.OnePlayer;
@@ -20,11 +21,9 @@ namespace Data
         [SerializeField] public int lives = 3;
         [SerializeField] public int currentScore = 0;
         
-        //[SerializeField] private bool gunPowerUp = false;
-        //[SerializeField] private bool shieldPowerUp = false;
-
         [Header("USER INTERFACE")]
         [SerializeField] public Text livesText = null;
         [SerializeField] public Text scoreText = null;
+        [SerializeField] public MainMenuHandler mainMenuHandler = null;
     }
 }
