@@ -43,6 +43,7 @@ namespace GameStates
         private void OnRestart()
         {
             //not sure how this will work
+            //could just create a new play state??
         }
 
         private void OnMenu()
