@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CustomInput
@@ -23,6 +24,27 @@ namespace CustomInput
             DontDestroyOnLoad(this);
             
             RestoreDefault(); //creates the object, not needed if made a poco
+        }
+
+        public static int GetAxis(int player, string axis)
+        {
+            switch (axis)
+            {
+                case "horizontal":
+                {
+                    var left = Input.GetKey(Instance._keybindings.CheckKey(player, "left")) ? -1 : 0;
+                    var right = Input.GetKey(Instance._keybindings.CheckKey(player, "right")) ? 1 : 0;
+                    return left + right;  
+                }
+                case "vertical":
+                {
+                    var up = Input.GetKey(Instance._keybindings.CheckKey(player, "up")) ? 1 : 0;
+                    var down = Input.GetKey(Instance._keybindings.CheckKey(player, "down")) ? -1 : 0;
+                    return up + down;  
+                }
+                default:
+                    return 0;
+            }
         }
         
         public static bool GetKeyPressed(int player, string map)
