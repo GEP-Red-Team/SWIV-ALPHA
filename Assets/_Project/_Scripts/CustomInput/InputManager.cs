@@ -36,7 +36,7 @@ namespace CustomInput
 
         public static bool IsKeyPressed(string map)
         {
-            return Input.GetKey(Instance.keybindings.CheckKey(1, map));
+            return Input.GetKey(Instance._keybindings.CheckKey(1, map));
         }
 
         public static void SetKey(string map, KeyCode keyCode)

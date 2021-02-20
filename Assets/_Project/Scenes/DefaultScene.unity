@@ -2295,7 +2295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1058077114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2660,14 +2660,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f6a45ac537d3d46b73fbb5272a76dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playstateObjects: {fileID: 0}
+  mainMenuObjects: {fileID: 0}
   gameMode: 0
   shipOption: 1
   level: 1
   isPaused: 0
   lives: 3
   currentScore: 0
-  gunPowerUp: 0
-  shieldPowerUp: 0
+  livesText: {fileID: 0}
+  scoreText: {fileID: 0}
+  mainMenuHandler: {fileID: 0}
 --- !u!114 &1153548671
 MonoBehaviour:
   m_ObjectHideFlags: 0

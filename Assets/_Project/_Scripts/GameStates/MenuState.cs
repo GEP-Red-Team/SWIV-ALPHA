@@ -18,42 +18,11 @@ namespace GameStates
 
         public override void Start()
         {
-<<<<<<< HEAD
             Debug.Log("START() :: MENU STATE");
             Game.GameData.mainMenuObjects.SetActive(true);
             Game.GameData.mainMenuHandler.OnPlayClickedCallback += OnPlayButtonClicked;
         }
 
-=======
-            //Enable the objects in scene
-            MenuObjects.menuParent.gameObject.SetActive(true);
-            
-            //Register buttons to callbacks
-            MenuObjects.playButton.onClick.AddListener(OnPlay);
-            MenuObjects.levelSelectButton.onClick.AddListener(OnLevelSelectScreen);
-            MenuObjects.shipSelectButton.onClick.AddListener(OnShipSelectScreen);
-            MenuObjects.controlsButton.onClick.AddListener(OnControlScreen);
-            MenuObjects.quitButton.onClick.AddListener(OnQuit);
-            
-            //Individual Ship Buttons
-            MenuObjects.ship1B.onClick.AddListener(() => OnShipSelected(1));
-            MenuObjects.ship2B.onClick.AddListener(() => OnShipSelected(2));
-            MenuObjects.ship3B.onClick.AddListener(() => OnShipSelected(3));
-            MenuObjects.ship4B.onClick.AddListener(() => OnShipSelected(4));
-            
-            //Back Buttons
-            MenuObjects.back1.onClick.AddListener(OnBack);
-            MenuObjects.back2.onClick.AddListener(OnBack);
-            MenuObjects.back3.onClick.AddListener(OnBack);
-
-            //Add sprites to the list
-            _sprites.Add(MenuObjects.ship1S);
-            _sprites.Add(MenuObjects.ship2S);
-            _sprites.Add(MenuObjects.ship3S);
-            _sprites.Add(MenuObjects.ship4S);
-        }
-        
->>>>>>> c2cef5784c5d07b0f559e6cc51aecf08d9e0f235
         public override void Update()
         {
             if (_shipSelectScreen) 
@@ -64,17 +33,8 @@ namespace GameStates
 
         public override void End()
         {
-<<<<<<< HEAD
-            Debug.Log("END()   :: MENU STATE");
-            Game.GameData.mainMenuObjects.SetActive(false);
-        }
-
-        public void OnPlayButtonClicked()
-        {
-            Game.SetState(new PlayState(Game));
-=======
             //Disable the objects in scene
-            MenuObjects.menuParent.SetActive(false);
+            //MenuObjects.menuParent.SetActive(false);
             
             //Deregister buttons to callbacks
             MenuObjects.playButton.onClick.RemoveListener(OnPlay);
@@ -91,6 +51,9 @@ namespace GameStates
             MenuObjects.back1.onClick.RemoveListener(OnBack);
             MenuObjects.back2.onClick.RemoveListener(OnBack);
             MenuObjects.back3.onClick.RemoveListener(OnBack);
+
+            Debug.Log("END()   :: MENU STATE");
+            Game.GameData.mainMenuObjects.SetActive(false);
         }
 
         private void OnPlay()
@@ -139,7 +102,7 @@ namespace GameStates
             //NOTE : this doesnt work in editor
             Application.Quit();
         }
-        
+
         private void RotateSprites()
         {
             foreach (var ship in _sprites)
@@ -148,7 +111,11 @@ namespace GameStates
                 rot.y = rot.y + 20 * Time.deltaTime;
                 ship.transform.eulerAngles = rot;
             }
->>>>>>> c2cef5784c5d07b0f559e6cc51aecf08d9e0f235
+        }
+
+        public void OnPlayButtonClicked()
+        {
+            Game.SetState(new PlayState(Game));
         }
     }
 }
