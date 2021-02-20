@@ -77,6 +77,8 @@ public class ShieldPowerup
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject playObjects;
+    
     public float speed = 10f;
 
     public string fireInput = "shoot";
@@ -153,6 +155,7 @@ public class PlayerController : MonoBehaviour
             bulletPool.Add(Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity));
             //bulletPool[i].transform.localScale = transform.localScale; // Bullet scale is applied seperately in the bullet prefab.
             bulletPool[i].GetComponent<BulletController>().OnEnemyShot += OnShotEnemy;
+            bulletPool[i].transform.SetParent(playObjects.transform);
             bulletPool[i].SetActive(false);
         }
 

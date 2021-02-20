@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class BackgroundController : MonoBehaviour
 {
+    public GameObject playObjects;
+    
     [SerializeField] private BackgroundData data;
     [SerializeField] private GameObject objectToPool;
     [SerializeField] private int amountToPool;
@@ -20,7 +22,7 @@ public class BackgroundController : MonoBehaviour
 
         for (int i = 0; i < amountToPool; i++)
         {
-            var temp = Instantiate(objectToPool);
+            var temp = Instantiate(objectToPool, playObjects.transform, true);
             temp.SetActive(false);
             temp.GetComponent<Renderer>().material = data.materials[i];
             temp.transform.localScale = data.panelDimensions;
