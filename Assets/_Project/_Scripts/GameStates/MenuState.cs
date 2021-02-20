@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using CustomInput;
+﻿using System.Collections.Generic;
 using Data;
-using UnityEditor;
 using UnityEngine;
 
 namespace GameStates
@@ -18,9 +15,27 @@ namespace GameStates
 
         public override void Start()
         {
-            Debug.Log("START() :: MENU STATE");
             Game.GameData.mainMenuObjects.SetActive(true);
-            Game.GameData.mainMenuHandler.OnPlayClickedCallback += OnPlayButtonClicked;
+            
+            MenuObjects.playButton.onClick.AddListener(OnPlay);
+            MenuObjects.levelSelectButton.onClick.AddListener(OnLevelSelectScreen);
+            MenuObjects.shipSelectButton.onClick.AddListener(OnShipSelectScreen);
+            MenuObjects.controlsButton.onClick.AddListener(OnControlScreen);
+            MenuObjects.quitButton.onClick.AddListener(OnQuit);
+            
+            MenuObjects.ship1B.onClick.AddListener(() => OnShipSelected(1));
+            MenuObjects.ship2B.onClick.AddListener(() => OnShipSelected(2));
+            MenuObjects.ship3B.onClick.AddListener(() => OnShipSelected(3));
+            MenuObjects.ship4B.onClick.AddListener(() => OnShipSelected(4));
+            
+            MenuObjects.back1.onClick.AddListener(OnBack);
+            MenuObjects.back2.onClick.AddListener(OnBack);
+            MenuObjects.back3.onClick.AddListener(OnBack);
+
+            _sprites.Add(MenuObjects.ship1S);
+            _sprites.Add(MenuObjects.ship2S);
+            _sprites.Add(MenuObjects.ship3S);
+            _sprites.Add(MenuObjects.ship4S);
         }
 
         public override void Update()
@@ -33,10 +48,10 @@ namespace GameStates
 
         public override void End()
         {
-            //Disable the objects in scene
-            //MenuObjects.menuParent.SetActive(false);
+            // hide the menu
+            MenuObjects.menuParent.SetActive(false);
             
-            //Deregister buttons to callbacks
+            // deregister callbacks
             MenuObjects.playButton.onClick.RemoveListener(OnPlay);
             MenuObjects.levelSelectButton.onClick.RemoveListener(OnLevelSelectScreen);
             MenuObjects.shipSelectButton.onClick.RemoveListener(OnShipSelectScreen);
@@ -52,7 +67,6 @@ namespace GameStates
             MenuObjects.back2.onClick.RemoveListener(OnBack);
             MenuObjects.back3.onClick.RemoveListener(OnBack);
 
-            Debug.Log("END()   :: MENU STATE");
             Game.GameData.mainMenuObjects.SetActive(false);
         }
 

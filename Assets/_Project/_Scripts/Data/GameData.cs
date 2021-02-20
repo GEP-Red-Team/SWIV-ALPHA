@@ -25,6 +25,5 @@ namespace Data
         [Header("USER INTERFACE")]
         [SerializeField] public Text livesText = null;
         [SerializeField] public Text scoreText = null;
-        [SerializeField] public MainMenuHandler mainMenuHandler = null;
     }
 }
