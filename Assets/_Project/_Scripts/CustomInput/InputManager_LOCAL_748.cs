@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CustomInput
 {
@@ -8,7 +7,7 @@ namespace CustomInput
         public static InputManager Instance;
 
         private Keybindings _keybindings = default;
-        
+
         void Awake()
         {
             if (!Instance)
@@ -25,29 +24,24 @@ namespace CustomInput
             RestoreDefault(); //creates the object, not needed if made a poco
         }
         
-        public static bool GetKeyPressed(int player, string map)
+        public static bool KeyDown(string map)
         {
-            return Input.GetKey(Instance._keybindings.CheckKey(player, map));
+            return Input.GetKeyDown(Instance._keybindings.CheckKey(1, map));
         }
         
-        public static bool GetKeyDown(int player, string map)
+        public static string GetKey(string map)
         {
-            return Input.GetKeyDown(Instance._keybindings.CheckKey(player, map));
+            return Instance._keybindings.CheckKey(1, map).ToString();
         }
-        
-        public static string GetKeyName(int player, string map)
+
+        public static bool IsKeyPressed(string map)
         {
-            return Instance._keybindings.CheckKey(player, map).ToString();
+            return Input.GetKey(Instance._keybindings.CheckKey(1, map));
         }
-        
-        public static void SetKey(int player, string map, KeyCode keyCode)
+
+        public static void SetKey(string map, KeyCode keyCode)
         {
-            Instance._keybindings.SetKeybind(player, map, keyCode);
-        }
-        
-        public static bool KeyCodeIsUsed(KeyCode keyCode)
-        {
-            return Instance._keybindings.KeyCodeIsUsed(keyCode);
+            Instance._keybindings.SetKeybind(1, map, keyCode);
         }
 
         public void RestoreDefault()
@@ -56,6 +50,5 @@ namespace CustomInput
             _keybindings = new Keybindings();
             _keybindings.Init();
         }
-        
     }
 }

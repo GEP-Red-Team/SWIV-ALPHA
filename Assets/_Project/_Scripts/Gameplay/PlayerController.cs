@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         // Fire if cooldown reached
-        if (CustomInput.InputManager.IsKeyPressed(fireInput))
+        if (CustomInput.InputManager.GetKeyPressed(1, fireInput))
         {
             if (CanFire())
             {

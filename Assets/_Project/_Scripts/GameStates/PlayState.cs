@@ -54,7 +54,7 @@ namespace GameStates
 
             }
 
-            if (InputManager.KeyDown("pause"))
+            if (InputManager.GetKeyDown(1, "pause"))
             {
                 Game.OnPause();
             }

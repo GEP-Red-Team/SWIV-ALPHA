@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using CustomInput;
 using Data;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GameStates
 {
@@ -12,6 +17,8 @@ namespace GameStates
         private bool _shipSelectScreen = false;
 
         private MenuObjects MenuObjects => Game.menuObjects;
+
+        private bool _listeningForInput = false;
 
         public override void Start()
         {
@@ -31,7 +38,21 @@ namespace GameStates
             MenuObjects.back1.onClick.AddListener(OnBack);
             MenuObjects.back2.onClick.AddListener(OnBack);
             MenuObjects.back3.onClick.AddListener(OnBack);
-
+            
+            //Controls Buttons
+            MenuObjects.p1Up.onClick.AddListener(   () => OnSetKey(1, "up", MenuObjects.p1Up));
+            MenuObjects.p1Down.onClick.AddListener( () => OnSetKey(1, "down", MenuObjects.p1Down));
+            MenuObjects.p1Left.onClick.AddListener( () => OnSetKey(1, "left", MenuObjects.p1Left));
+            MenuObjects.p1Right.onClick.AddListener(() => OnSetKey(1, "right", MenuObjects.p1Right));
+            MenuObjects.p1Shoot.onClick.AddListener(() => OnSetKey(1, "shoot", MenuObjects.p1Shoot));
+            
+            MenuObjects.p2Up.onClick.AddListener(   () => OnSetKey(2, "up", MenuObjects.p2Up));
+            MenuObjects.p2Down.onClick.AddListener( () => OnSetKey(2, "down", MenuObjects.p2Down));
+            MenuObjects.p2Left.onClick.AddListener( () => OnSetKey(2, "left", MenuObjects.p2Left));
+            MenuObjects.p2Right.onClick.AddListener(() => OnSetKey(2, "right", MenuObjects.p2Right));
+            MenuObjects.p2Shoot.onClick.AddListener(() => OnSetKey(2, "shoot", MenuObjects.p2Shoot));
+            
+            //Add sprites to the list
             _sprites.Add(MenuObjects.ship1S);
             _sprites.Add(MenuObjects.ship2S);
             _sprites.Add(MenuObjects.ship3S);
@@ -67,7 +88,17 @@ namespace GameStates
             MenuObjects.back2.onClick.RemoveListener(OnBack);
             MenuObjects.back3.onClick.RemoveListener(OnBack);
 
-            Game.GameData.mainMenuObjects.SetActive(false);
+            MenuObjects.p1Up.onClick.RemoveListener(   () => OnSetKey(1, "up", MenuObjects.p1Up));
+            MenuObjects.p1Down.onClick.RemoveListener( () => OnSetKey(1, "down", MenuObjects.p1Down));
+            MenuObjects.p1Left.onClick.RemoveListener( () => OnSetKey(1, "left", MenuObjects.p1Left));
+            MenuObjects.p1Right.onClick.RemoveListener(() => OnSetKey(1, "right", MenuObjects.p1Right));
+            MenuObjects.p1Shoot.onClick.RemoveListener(() => OnSetKey(1, "shoot", MenuObjects.p1Shoot));
+            
+            MenuObjects.p2Up.onClick.RemoveListener(   () => OnSetKey(2, "up", MenuObjects.p2Up));
+            MenuObjects.p2Down.onClick.RemoveListener( () => OnSetKey(2, "down", MenuObjects.p2Down));
+            MenuObjects.p2Left.onClick.RemoveListener( () => OnSetKey(2, "left", MenuObjects.p2Left));
+            MenuObjects.p2Right.onClick.RemoveListener(() => OnSetKey(2, "right", MenuObjects.p2Right));
+            MenuObjects.p2Shoot.onClick.RemoveListener(() => OnSetKey(2, "shoot", MenuObjects.p2Shoot));
         }
 
         private void OnPlay()
@@ -126,10 +157,53 @@ namespace GameStates
                 ship.transform.eulerAngles = rot;
             }
         }
-
-        public void OnPlayButtonClicked()
+        
+        private void OnSetKey(int player, string key, Button button)
         {
-            Game.SetState(new PlayState(Game));
+            //check if already listening for input 
+            if (_listeningForInput) return;
+            //if not start listening
+            Game.StartCoroutine(ListenForInput(player, key, button));
+        }
+
+        private IEnumerator ListenForInput(int player, string key, Button button)
+        {
+            _listeningForInput = true;
+            
+            //set text to "press key"
+            var text = button.GetComponentInChildren<TextMeshProUGUI>();
+            var oldText = text.text;
+            text.SetText("- press key -");
+            
+            //wait for key press            
+            while (!Input.anyKeyDown) yield return null;
+            
+            //check every key to see if its pressed
+            KeyCode keyPressed = default; 
+            foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
+            {
+                //check for the pressed key
+                if (!Input.GetKey(keyCode)) continue;
+                //check if key is already bound
+                if (InputManager.KeyCodeIsUsed(keyCode))
+                {
+                    text.SetText(oldText);
+                    _listeningForInput = false;
+                    yield break;
+                }
+                //store value and exit loop
+                keyPressed = keyCode;
+                break;
+            }
+
+            //set the key 
+            InputManager.SetKey(player, key, keyPressed);
+            
+            //update the text
+            text.SetText(InputManager.GetKeyName(player, key));
+
+            yield return new WaitForSeconds(.5F);
+            _listeningForInput = false;
         }
     }
 }

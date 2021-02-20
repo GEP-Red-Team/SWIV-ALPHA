@@ -25,21 +25,16 @@ namespace CustomInput
             RestoreDefault(); //creates the object, not needed if made a poco
         }
         
-        public static bool GetKeyPressed(int player, string map)
+        public static bool KeyDown(string map)
         {
-            return Input.GetKey(Instance._keybindings.CheckKey(player, map));
+            return Input.GetKeyDown(Instance._keybindings.CheckKey(1, map));
         }
         
-        public static bool GetKeyDown(int player, string map)
-        {
-            return Input.GetKeyDown(Instance._keybindings.CheckKey(player, map));
-        }
-        
-        public static string GetKeyName(int player, string map)
+        public static string GetKey(int player, string map)
         {
             return Instance._keybindings.CheckKey(player, map).ToString();
         }
-        
+
         public static void SetKey(int player, string map, KeyCode keyCode)
         {
             Instance._keybindings.SetKeybind(player, map, keyCode);
