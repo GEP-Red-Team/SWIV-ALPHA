@@ -12,9 +12,9 @@ namespace Data
         public GameObject mainMenuObjects;
 
         [Header("GAME INFO")]
-        [SerializeField] private GameMode gameMode = GameMode.OnePlayer;
+        //[SerializeField] private GameMode gameMode = GameMode.OnePlayer;
+        //[SerializeField] private int level = 1;
         public int shipOption = 1;
-        [SerializeField] private int level = 1;
         [SerializeField] private bool isPaused = false;
         public bool IsPaused { set => isPaused = value; get => isPaused; }
 
