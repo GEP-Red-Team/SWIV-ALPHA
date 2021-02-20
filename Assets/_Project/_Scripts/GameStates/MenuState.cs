@@ -177,6 +177,7 @@ namespace GameStates
             
             //set text to "press key"
             var text = button.GetComponentInChildren<TextMeshProUGUI>();
+            var oldText = text.text;
             text.SetText("- press key -");
             
             //wait for key press            
@@ -186,7 +187,16 @@ namespace GameStates
             KeyCode keyPressed = default; 
             foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
             {
+                //check for the pressed key
                 if (!Input.GetKey(keyCode)) continue;
+                //check if key is already bound
+                if (InputManager.KeyCodeIsUsed(keyCode))
+                {
+                    text.SetText(oldText);
+                    _listeningForInput = false;
+                    yield break;
+                }
+                //store value and exit loop
                 keyPressed = keyCode;
                 break;
             }

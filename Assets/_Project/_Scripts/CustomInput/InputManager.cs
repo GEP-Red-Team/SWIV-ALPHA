@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CustomInput
 {
@@ -7,7 +8,7 @@ namespace CustomInput
         public static InputManager Instance;
 
         private Keybindings _keybindings = default;
-
+        
         void Awake()
         {
             if (!Instance)
@@ -38,6 +39,11 @@ namespace CustomInput
         {
             Instance._keybindings.SetKeybind(player, map, keyCode);
         }
+        
+        public static bool KeyCodeIsUsed(KeyCode keyCode)
+        {
+            return Instance._keybindings.KeyCodeIsUsed(keyCode);
+        }
 
         public void RestoreDefault()
         {
@@ -45,5 +51,6 @@ namespace CustomInput
             _keybindings = new Keybindings();
             _keybindings.Init();
         }
+        
     }
 }

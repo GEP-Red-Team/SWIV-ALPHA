@@ -13,7 +13,6 @@ namespace CustomInput
         public void Init()
         {
             _player1.Add("shoot",  KeyCode.Space);
-            _player1.Add("select", KeyCode.E);
             _player1.Add("pause",  KeyCode.Escape);
             _player1.Add("up",     KeyCode.W);
             _player1.Add("down",   KeyCode.S);
@@ -21,7 +20,6 @@ namespace CustomInput
             _player1.Add("right",  KeyCode.D);
             
             _player2.Add("shoot",  KeyCode.Keypad0);
-            _player2.Add("select", KeyCode.KeypadEnter);
             _player2.Add("pause",  KeyCode.KeypadPeriod);
             _player2.Add("up",     KeyCode.Keypad8);
             _player2.Add("down",   KeyCode.Keypad5);
@@ -45,6 +43,11 @@ namespace CustomInput
                     _player2[map] = keyCode;
                     break;
             }
+        }
+
+        public bool KeyCodeIsUsed(KeyCode keyCode)
+        {
+            return _player1.Any(key => key.Value == keyCode);
         }
     }
 }
