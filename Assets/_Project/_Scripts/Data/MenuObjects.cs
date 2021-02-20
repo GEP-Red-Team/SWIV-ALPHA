@@ -35,6 +35,18 @@ namespace Data
         public GameObject ship2S = default;
         public GameObject ship3S = default;
         public GameObject ship4S = default;
+
+        [Header("Controls Buttons")] 
+        public Button p1Up = default;
+        public Button p1Down = default;
+        public Button p1Left = default;
+        public Button p1Right = default;
+        public Button p1Shoot = default;
         
+        public Button p2Up = default;
+        public Button p2Down = default;
+        public Button p2Left = default;
+        public Button p2Right = default;
+        public Button p2Shoot = default;
     }
 }

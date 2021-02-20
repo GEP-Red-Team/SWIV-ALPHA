@@ -29,14 +29,14 @@ namespace CustomInput
             return Input.GetKeyDown(Instance._keybindings.CheckKey(1, map));
         }
         
-        public static string GetKey(string map)
+        public static string GetKey(int player, string map)
         {
-            return Instance._keybindings.CheckKey(1, map).ToString();
+            return Instance._keybindings.CheckKey(player, map).ToString();
         }
 
-        public static void SetKey(string map, KeyCode keyCode)
+        public static void SetKey(int player, string map, KeyCode keyCode)
         {
-            Instance._keybindings.SetKeybind(1, map, keyCode);
+            Instance._keybindings.SetKeybind(player, map, keyCode);
         }
 
         public void RestoreDefault()
