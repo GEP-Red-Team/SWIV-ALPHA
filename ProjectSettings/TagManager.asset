@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BackgroundController
+  - Background
+  - Enemy
+  - SBackground
+  - Bullet
+  - PowerupShield
   layers:
   - Default
   - TransparentFX
@@ -13,10 +19,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Ship1
+  - Ship2
+  - Ship3
+  - Ship4
   - 
   - 
   - 
