@@ -154,7 +154,7 @@ RectTransform:
   - {fileID: 873100134}
   - {fileID: 1755735054}
   m_Father: {fileID: 445819235}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -469,12 +469,12 @@ GameObject:
   m_Component:
   - component: {fileID: 445819235}
   m_Layer: 0
-  m_Name: PlaystateObjects
+  m_Name: PlayStateObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &445819235
 Transform:
   m_ObjectHideFlags: 0
@@ -486,21 +486,19 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 864967958}
-  - {fileID: 1332252928}
   - {fileID: 2281916}
-  - {fileID: 543450651610818954}
   - {fileID: 1365122597}
+  - {fileID: 543450651610818954}
   - {fileID: 687729185}
-  - {fileID: 1245796104}
   - {fileID: 1169257851}
+  - {fileID: 1245796104}
   - {fileID: 1237895022}
   - {fileID: 1606995341}
   - {fileID: 594221485}
   - {fileID: 987286681}
   - {fileID: 1861761767}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447368646
 GameObject:
@@ -584,7 +582,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1704416161}
+      - m_Target: {fileID: 0}
         m_MethodName: OnQuitButton
         m_Mode: 1
         m_Arguments:
@@ -897,7 +895,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 445819235}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &618168836
 GameObject:
@@ -1058,7 +1056,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c157d47727008e44988af92a60e0017f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -97
+      value: 107.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c157d47727008e44988af92a60e0017f,
         type: 3}
@@ -1110,6 +1108,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: craft_speederD
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c157d47727008e44988af92a60e0017f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c157d47727008e44988af92a60e0017f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c157d47727008e44988af92a60e0017f, type: 3}
 --- !u!4 &644564828 stripped
@@ -1153,7 +1161,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 445819235}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &687729186
 MonoBehaviour:
@@ -1388,7 +1396,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 445819235}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &873100133
@@ -1760,7 +1768,7 @@ Transform:
   m_LocalScale: {x: 16.156, y: 10.954258, z: 22.241488}
   m_Children: []
   m_Father: {fileID: 445819235}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &987286682
 MonoBehaviour:
@@ -2204,7 +2212,7 @@ Transform:
   - {fileID: 964357529}
   - {fileID: 1260580963}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1063072736
 GameObject:
@@ -2705,7 +2713,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a9b9a7277f4ee054c8729f2fc76aa13b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -97
+      value: 107.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9b9a7277f4ee054c8729f2fc76aa13b,
         type: 3}
@@ -2746,6 +2754,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: craft_speederC
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9b9a7277f4ee054c8729f2fc76aa13b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9b9a7277f4ee054c8729f2fc76aa13b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9b9a7277f4ee054c8729f2fc76aa13b, type: 3}
@@ -2803,7 +2821,6 @@ MonoBehaviour:
   currentScore: 0
   livesText: {fileID: 873100135}
   scoreText: {fileID: 1755735055}
-  mainMenuHandler: {fileID: 1704416161}
 --- !u!114 &1153548671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2831,7 +2848,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1153548673
 MonoBehaviour:
@@ -2912,7 +2929,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 445819235}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1169257852
 MonoBehaviour:
@@ -3379,7 +3396,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 445819235}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!4 &1245796104 stripped
 Transform:
@@ -3579,7 +3596,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 445819235}
+  m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1334817892
@@ -3731,7 +3748,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 445819235}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1365122598
 MonoBehaviour:
@@ -4231,7 +4248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1606995340
 GameObject:
@@ -4261,7 +4278,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 445819235}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &1616357121
 GameObject:
@@ -4795,7 +4812,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1704416160}
-  - component: {fileID: 1704416161}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -4828,24 +4844,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1704416161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704416159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc14cc594a20a84ea0c6b1190c1229d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sprite1: {fileID: 2094994225}
-  Sprite2: {fileID: 1720436124}
-  Sprite3: {fileID: 1129923013}
-  Sprite4: {fileID: 644564829}
-  ShipSelect: {fileID: 315273971}
-  selectedShip: 0
 --- !u!1 &1712000349
 GameObject:
   m_ObjectHideFlags: 0
@@ -5019,7 +5017,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4a462bc4bd5d6314c91a61eb19a23604,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -90
+      value: 114.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a462bc4bd5d6314c91a61eb19a23604,
         type: 3}
@@ -5061,6 +5059,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: craft_speederB
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4a462bc4bd5d6314c91a61eb19a23604,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4a462bc4bd5d6314c91a61eb19a23604,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a462bc4bd5d6314c91a61eb19a23604, type: 3}
 --- !u!4 &1720436123 stripped
@@ -5085,7 +5093,7 @@ PrefabInstance:
     - target: {fileID: 7242755953178037617, guid: 79463655edd8a8b489dcfe6f0a7b357f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7242755953178037617, guid: 79463655edd8a8b489dcfe6f0a7b357f,
         type: 3}
@@ -5657,7 +5665,7 @@ Transform:
   m_LocalScale: {x: 19.432478, y: 1, z: 15.23775}
   m_Children: []
   m_Father: {fileID: 445819235}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1861761768
 MonoBehaviour:
@@ -6070,7 +6078,7 @@ GameObject:
   - component: {fileID: 2029388067}
   - component: {fileID: 2029388066}
   m_Layer: 5
-  m_Name: PauseParent
+  m_Name: PauseStateObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6091,7 +6099,7 @@ RectTransform:
   - {fileID: 1906359956}
   - {fileID: 1124794834}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6240,7 +6248,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1704416161}
+      - m_Target: {fileID: 0}
         m_MethodName: OnPlayButton
         m_Mode: 1
         m_Arguments:
@@ -6328,7 +6336,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 28b9a3aa472a3d14e84615a3452ac713,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -97
+      value: 107.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28b9a3aa472a3d14e84615a3452ac713,
         type: 3}
@@ -6370,6 +6378,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: craft_speederA
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 28b9a3aa472a3d14e84615a3452ac713,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 28b9a3aa472a3d14e84615a3452ac713,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b9a3aa472a3d14e84615a3452ac713, type: 3}
 --- !u!4 &2094994224 stripped
@@ -6400,7 +6418,7 @@ PrefabInstance:
     - target: {fileID: 2437987542103136162, guid: 4984bd7ee3f18f9498002d20d8e33bef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2437987542103136162, guid: 4984bd7ee3f18f9498002d20d8e33bef,
         type: 3}
