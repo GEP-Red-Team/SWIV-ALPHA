@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public GameObject[] enemyPrefabs; // enemy types you want (set manually in inspector)
     public int[] amountOfEnemyType; // amount of enemy type (set manually in inspector) 
     public Spawner spawner;
+    public GameObject PlayObjects;
 
     [SerializeField] private Dictionary<string, List<GameObject>> enemies;
     [SerializeField] private float enemyCheckTimer = 2f;
@@ -47,7 +48,7 @@ public class EnemyController : MonoBehaviour
 
             for (var j = 0; j < amount; j++)
             {
-                var temp = Instantiate(enemyPrefabs[i]);
+                var temp = Instantiate(enemyPrefabs[i], PlayObjects.transform, true);
                 temp.SetActive(false);
                 temp.GetComponent<IEnemy>().ID = newID;
                 temp.GetComponent<IEnemy>().Offset = -offset;

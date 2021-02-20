@@ -100,11 +100,11 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 1ed52db0dd788a946a85664d35707d3e, type: 2}
   id: 0
   offset: 0
-  frequency: 3
-  magnitude: 1
-  sineSpeed: 1
   startPosition: {x: 0, y: 0, z: 0}
   newPosition: {x: 0, y: 0, z: 0}
+  frequency: 2
+  magnitude: 0.5
+  sineSpeed: 1
 --- !u!65 &7655116487491648831
 BoxCollider:
   m_ObjectHideFlags: 0

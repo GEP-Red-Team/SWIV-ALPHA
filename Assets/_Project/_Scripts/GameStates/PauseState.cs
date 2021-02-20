@@ -12,6 +12,7 @@ namespace GameStates
         {
             //Tell the game data and activate the scene objects
             Game.GameData.IsPaused = true;
+            Game.GameData.playstateObjects.SetActive(false);
             PauseObjects.pauseParent.SetActive(true);
             
             //Register callbacks
@@ -37,6 +38,7 @@ namespace GameStates
 
         private void OnResume()
         {
+            Game.GameData.playstateObjects.SetActive(true);
             Game.OnPause();
         }
 
