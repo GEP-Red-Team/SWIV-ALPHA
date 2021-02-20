@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using CustomInput;
+using Data;
 using UnityEngine;
 
 namespace GameStates
@@ -12,6 +13,7 @@ namespace GameStates
         {
             //Tell the game data and activate the scene objects
             Game.GameData.IsPaused = true;
+            Game.GameData.playstateObjects.SetActive(false);
             PauseObjects.pauseParent.SetActive(true);
             
             //Register callbacks
@@ -21,7 +23,10 @@ namespace GameStates
         }
         public override void Update()
         {
-            
+            if (InputManager.GetKeyDown(1, "pause"))
+            {
+                OnResume();
+            }
         }
         public override void End()
         {
@@ -37,6 +42,7 @@ namespace GameStates
 
         private void OnResume()
         {
+            Game.GameData.playstateObjects.SetActive(true);
             Game.OnPause();
         }
 
@@ -51,7 +57,5 @@ namespace GameStates
             Game.OnPause();
             Game.SetState(new MenuState(Game));
         }
-
-
     }
 }
