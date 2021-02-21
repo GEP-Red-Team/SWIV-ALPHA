@@ -1,4 +1,5 @@
 ﻿using CustomInput;
+using Sound;
 using UnityEngine;
 
 namespace GameStates
@@ -70,6 +71,8 @@ namespace GameStates
 
         public void OnPlayerHit()
         {
+            SoundManager.PlaySound(SoundManager.Sound.Death);
+
             Game.GameData.lives--;
 
             UpdateLivesUI();

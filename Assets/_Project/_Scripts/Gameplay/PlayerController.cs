@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using CustomInput;
+using Sound;
 using UnityEngine;
 
 // Shields will be spawned into the scene under certain conditions:
@@ -28,6 +29,10 @@ public class ShieldPowerup
 
     public void Activate()
     {
+        //play sound
+        SoundManager.PlaySound(SoundManager.Sound.ShieldUp);
+
+        //logic
         active = true;
         madeActiveTime = Time.time;
         remainingHits = 4;
@@ -36,6 +41,10 @@ public class ShieldPowerup
 
     public void Deactivate()
     {
+        //play sound
+        SoundManager.PlaySound(SoundManager.Sound.ShieldUp);
+        
+        //logic
         active = false;
         shieldGameObject.SetActive(false);
     }
@@ -217,6 +226,7 @@ public class PlayerController : MonoBehaviour
 
         GameObject bullet = bulletPool[currentBulletIndex];
         bullet.SetActive(true);
+        SoundManager.PlaySound(SoundManager.Sound.Fire, SoundManager.ParentState.Play);
 
         // Put the bullet in front of the player.
         bullet.transform.position = transform.position + (transform.forward * BULLET_SPAWN_DISTANCE_FROM_PLAYER);
