@@ -2708,7 +2708,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
@@ -5423,26 +5423,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyType:
+  - waveNumber: Wave 1
+    enemyType:
     - SineWave
-    enemyAmount: 0200000000000000
-    spawnRate: 1
-  - enemyType:
+    - SineWave
+    enemyAmount: 0500000005000000
+    spawnRate: 0.5
+  - waveNumber: Wave 2
+    enemyType:
     - Turret
     enemyAmount: 03000000
     spawnRate: 1
-  - enemyType:
+  - waveNumber: Wave 3
+    enemyType:
     - SineWave
-    enemyAmount: 0200000000000000
+    enemyAmount: 02000000
+    spawnRate: 1
+  - waveNumber: Wave 4
+    enemyType:
+    - SineWave
+    enemyAmount: 02000000
+    spawnRate: 1
+  - waveNumber: Wave 5
+    enemyType:
+    - SineWave
+    enemyAmount: 02000000
+    spawnRate: 1
+  - waveNumber: Wave 6
+    enemyType:
+    - SineWave
+    enemyAmount: 02000000
+    spawnRate: 1
+  - waveNumber: Wave 7
+    enemyType:
+    - SineWave
+    enemyAmount: 02000000
     spawnRate: 1
   spawnPoints:
   - {fileID: 1237895022}
   - {fileID: 1606995341}
   - {fileID: 594221485}
-  waveTime: 5
-  nextWave: 0
-  waveCountdown: 0
-  state: 1
+  waveTime: 3
 --- !u!114 &1169257853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5458,7 +5479,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 2526066641752911748, guid: 4c8286387cfe3bb4fa23400540d722a3, type: 3}
   - {fileID: 3936622569428503050, guid: ca57efae5b7bdb848a727447c5920fc6, type: 3}
-  amountOfEnemyType: 0a00000003000000
+  amountOfEnemyType: 1400000014000000
   spawner: {fileID: 1169257852}
   playObjects: {fileID: 445819234}
   enemyCheckTimer: 2
@@ -9307,7 +9328,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0

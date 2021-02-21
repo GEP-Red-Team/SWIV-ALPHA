@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
@@ -10,21 +11,25 @@ public class Spawner : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
-        public string[] enemyType;  // specify the enemy type/s for this wave
-        public int[] enemyAmount;   // specify the amount of enemies you want of a given type
-        public float spawnRate;     // control the speed at which the enemies spawn for wave
+        public string waveNumber;
+        public string[] enemyType; // specify the enemy type/s for this wave
+        public int[] enemyAmount; // specify the amount of enemies you want of a given type
+        public float spawnRate; // control the speed at which the enemies spawn for wave
     }
 
     [SerializeField]
     public enum SpawnState { Spawning, Countdown, Wait } // used for stopping spawning of multiple coroutines 
 
-    public Wave[] waves;                                // create amount of waves wanted
-    public Transform[] spawnPoints = new Transform[3];  // set to 3 as only 3 spawn points at the moment
-    public float waveTime = 5f;                         // used to choose the time to countdown to the next wave
+    [Header("ENEMY WAVES")] public Wave[] waves;
+    public Transform[] spawnPoints = new Transform[3]; // set to 3 as only 3 spawn points at the moment
 
-    [SerializeField] private int nextWave;              // currently unused
-    [SerializeField] private float waveCountdown;
-    [SerializeField] private SpawnState state = SpawnState.Countdown;
+    [Header("ENEMY WAVE COUNTDOWN")]
+    public float waveTime = 5f; // used to choose the time to countdown to the next wave
+
+    // Controls the waves spawning
+    private int nextWave; // currently unused
+    private float waveCountdown;
+    private SpawnState state = SpawnState.Countdown;
 
     private void Start() { waveCountdown = waveTime; }
 
@@ -43,23 +48,26 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnWave(IReadOnlyDictionary<string, List<GameObject>> enemies, Wave wave)
     {
-        state = SpawnState.Spawning;  // stops any attempts to spawn waves
-        
+        state = SpawnState.Spawning; // stops any attempts to spawn waves
+
         for (var i = 0; i < wave.enemyType.Length; i++)
         {
             var spawn = Random.Range(0, spawnPoints.Length - 1);
             var amount = wave.enemyAmount[i];
             var type = wave.enemyType[i];
             var enemyList = enemies[type];
+            
+            var startIndex = enemyList.TakeWhile(enemy => enemy.activeSelf).Count();
 
             for (var j = 0; j < amount; j++)
             {
-                SpawnEnemy(enemyList[j], spawn);
+                SpawnEnemy(enemyList[startIndex], spawn);
+                startIndex++;
                 yield return new WaitForSeconds(wave.spawnRate);
             }
         }
 
-        state = SpawnState.Wait;    // used to stop unnecessary invocation of spawner
+        state = SpawnState.Wait; // used to stop unnecessary invocation of spawner
     }
 
     private void SpawnEnemy(GameObject enemy, int spawn)

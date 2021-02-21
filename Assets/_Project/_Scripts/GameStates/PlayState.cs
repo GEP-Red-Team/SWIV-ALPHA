@@ -19,7 +19,7 @@ namespace GameStates
 
         
         private bool checkPlayerWon = false;
-        private const int MAX_SCORE = 500;
+        private const int MAX_SCORE = 10000;
 
         public override void Start()
         {
