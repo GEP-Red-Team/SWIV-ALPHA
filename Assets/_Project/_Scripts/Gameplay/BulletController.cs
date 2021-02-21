@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Sound;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -38,6 +39,9 @@ public class BulletController : MonoBehaviour
 
         if(other.CompareTag("Enemy"))
         {
+            //play sound
+            SoundManager.PlaySound(SoundManager.Sound.Death);
+            
             // Deactivate enemy.
             other.gameObject.SetActive(false);
 

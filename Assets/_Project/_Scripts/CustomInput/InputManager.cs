@@ -6,7 +6,7 @@ namespace CustomInput
 {
     public class InputManager : MonoBehaviour
     {
-        public static InputManager Instance;
+        public static InputManager Instance = default;
 
         private Keybindings _keybindings = default;
         

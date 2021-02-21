@@ -1,4 +1,5 @@
 ﻿using CustomInput;
+using Sound;
 using UnityEngine;
 
 namespace GameStates
@@ -102,6 +103,7 @@ namespace GameStates
             if(!checkResetPlayer)
             {
                 Game.GameData.lives--;
+                SoundManager.PlaySound(SoundManager.Sound.Death);
 
                 UpdateLivesUI();
 
