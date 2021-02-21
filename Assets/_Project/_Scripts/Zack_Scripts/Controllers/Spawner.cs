@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
     public float waveTime = 5f; // used to choose the time to countdown to the next wave
 
     // Controls the waves spawning
-    private int nextWave; // currently unused
+    private int nextWave = 0; // currently unused
     private float waveCountdown;
     private SpawnState state = SpawnState.Countdown;
 
@@ -38,6 +38,7 @@ public class Spawner : MonoBehaviour
         if (waveCountdown <= 0)
         {
             if (state == SpawnState.Spawning) return;
+            if (nextWave >= waves.Length) return;
             StartCoroutine(SpawnWave(enemies, waves[nextWave]));
             waveCountdown = waveTime;
             nextWave++;
