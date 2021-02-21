@@ -101,6 +101,7 @@ namespace GameStates
 
         private void OnGameOver()
         {
+            //Game.SetState(new LoseState(Game));
             Debug.Log("GAME OVER");
         }
 
