@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - PowerupShield
   - EBullet
+  - KillBox
   layers:
   - Default
   - TransparentFX

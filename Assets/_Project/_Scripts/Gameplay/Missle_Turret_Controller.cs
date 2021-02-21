@@ -74,7 +74,7 @@ public class Missle_Turret_Controller : IEnemy
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") || other.CompareTag("KillBox"))
         {
             // destroy turret and add score
             //game_controller.AddPlayerScore(score_value);
