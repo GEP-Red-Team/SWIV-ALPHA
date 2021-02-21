@@ -10,6 +10,7 @@ TagManager:
   - SBackground
   - Bullet
   - PowerupShield
+  - EBullet
   layers:
   - Default
   - TransparentFX

@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet") || other.CompareTag("Enemy"))
+        if (other.CompareTag("EBullet") || other.CompareTag("Enemy"))
         {
             if (!shieldPowerup.IsActive()) { OnPlayerHitCallback(); }
             else

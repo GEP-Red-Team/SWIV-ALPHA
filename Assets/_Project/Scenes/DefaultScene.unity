@@ -5426,8 +5426,8 @@ MonoBehaviour:
   - waveNumber: Wave 1
     enemyType:
     - SineWave
-    - SineWave
-    enemyAmount: 0500000005000000
+    - Missile
+    enemyAmount: 0500000001000000
     spawnRate: 0.5
   - waveNumber: Wave 2
     enemyType:
@@ -5479,7 +5479,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 2526066641752911748, guid: 4c8286387cfe3bb4fa23400540d722a3, type: 3}
   - {fileID: 3936622569428503050, guid: ca57efae5b7bdb848a727447c5920fc6, type: 3}
-  amountOfEnemyType: 1400000014000000
+  - {fileID: 1232603756742097310, guid: feec66e0e1dfcb844b6cccaa71324d17, type: 3}
+  amountOfEnemyType: 140000001400000014000000
   spawner: {fileID: 1169257852}
   playObjects: {fileID: 445819234}
   enemyCheckTimer: 2
