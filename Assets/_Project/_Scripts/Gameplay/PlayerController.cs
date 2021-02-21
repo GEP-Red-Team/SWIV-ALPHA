@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using CustomInput;
 using UnityEngine;
 
 // Shields will be spawned into the scene under certain conditions:
@@ -152,7 +153,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        direction = new Vector2(InputManager.GetAxis(1,"horizontal"), InputManager.GetAxis(1,"vertical"));
 
         // Fire if cooldown reached
         if (CustomInput.InputManager.GetKeyPressed(1, fireInput))

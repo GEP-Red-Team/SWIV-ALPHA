@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using CustomInput;
+using Data;
 using UnityEngine;
 
 namespace GameStates
@@ -22,7 +23,10 @@ namespace GameStates
         }
         public override void Update()
         {
-            
+            if (InputManager.GetKeyDown(1, "pause"))
+            {
+                OnResume();
+            }
         }
         public override void End()
         {
@@ -53,7 +57,5 @@ namespace GameStates
             Game.OnPause();
             Game.SetState(new MenuState(Game));
         }
-
-
     }
 }
