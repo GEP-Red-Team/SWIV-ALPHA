@@ -77,8 +77,9 @@ public class PlayerController : MonoBehaviour
     public int bulletPoolSize = 10;
 
     public delegate void OnPlayerHitDelegate();
-
+    public delegate void OnEnemyHit();
     public event OnPlayerHitDelegate OnPlayerHitCallback;
+    public event OnEnemyHit OnEnemyHitCallback;
 
     public float shieldPowerupObjectScaleOnPlayer = 2.5f;
     public float shieldPowerupObjectScaleInScene = 0.75f;
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
     public void OnShotEnemy(Transform transform)
     {
         playState.AddPlayerScore(ENEMY_SCORE_VALUE);
-
+        OnEnemyHitCallback();
         // Should a powerup be dropped?
         if (Random.Range(0, 3) == 1)
         {
