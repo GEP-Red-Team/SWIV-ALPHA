@@ -68,8 +68,6 @@ public class EnemyController : MonoBehaviour
     // returns
     private bool EnemiesAlive()
     {
-        if (enemyCheckTimer <= 0f) { return enemies.Any(type => type.Value.Any(obj => obj.activeSelf)); }
-
-        return true;
+        return !(enemyCheckTimer <= 0f) || enemies.Any(type => type.Value.Any(obj => obj.activeSelf));
     }
 }

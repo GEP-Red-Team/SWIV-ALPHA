@@ -11,9 +11,11 @@ public class Missle_Turret_Controller : IEnemy
     public int score_value = 200;
     public GameObject player = null;
     public float missle_speed = 10f;
+    public GameObject playObjects;
 
     //private Game_Controller game_controller = null;
     private GameObject missle = null;
+
     //private bool can_shoot = true;
     private float randomTimer = 0.0F;
     private float shotTimer = 0.0F;
@@ -24,7 +26,7 @@ public class Missle_Turret_Controller : IEnemy
         //game_controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_Controller>();
         player = GameObject.FindGameObjectWithTag("Player");
         newPosition = transform.position;
-        randomTimer = Random.Range(2.0F, 4.0F);
+        randomTimer = Random.Range(1.0F, 2.0F);
     }
 
     // Update is called once per framep
@@ -37,22 +39,20 @@ public class Missle_Turret_Controller : IEnemy
         {
             tryShoot();
             shotTimer = 0.0F;
-            randomTimer = Random.Range(2.0F, 4.0F);
+            randomTimer = Random.Range(1.0F, 2.0F);
         }
 
         shotTimer += Time.deltaTime;
     }
 
-    void tryShoot()
-    {
-        if (!missle) { shootMissle(); }
-    }
 
     void moveWithBackground()
     {
         newPosition.y -= Data.speed * Time.deltaTime;
         transform.position = newPosition;
     }
+    
+    void tryShoot() {if(!missle) shootMissle();}
 
     void shootMissle()
     {
@@ -78,7 +78,7 @@ public class Missle_Turret_Controller : IEnemy
         {
             // destroy turret and add score
             //game_controller.AddPlayerScore(score_value);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
