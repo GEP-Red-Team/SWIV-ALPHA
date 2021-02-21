@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Packages.Rider.Editor.UnitTesting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sound
 {
@@ -14,7 +15,8 @@ namespace Sound
             Fire,
             Death,
             ShieldUp,
-            ShieldDown
+            ShieldDown,
+            ButtonClick
         }
         
         public enum ParentState
@@ -35,6 +37,7 @@ namespace Sound
         [SerializeField] private AudioClip death = default;
         [SerializeField] private AudioClip shieldUp = default;
         [SerializeField] private AudioClip shieldDown = default;
+        [SerializeField] private AudioClip buttonClick = default;
         
         [SerializeField] private Dictionary<Sound, AudioClip> _gameSounds = new Dictionary<Sound, AudioClip>();
 
@@ -61,8 +64,9 @@ namespace Sound
             Instance._gameSounds.Add(Sound.Death, death);
             Instance._gameSounds.Add(Sound.ShieldUp, shieldUp);
             Instance._gameSounds.Add(Sound.ShieldDown, shieldDown);
+            Instance._gameSounds.Add(Sound.ButtonClick, buttonClick);
         }
-
+        
         public static void PlaySound(Sound sound, ParentState parentState = ParentState.None)
         {
             switch (parentState)
