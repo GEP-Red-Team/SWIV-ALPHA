@@ -10,6 +10,7 @@ namespace Data
         [Header("SCENE OBJECTS")]
         public GameObject playstateObjects;
         public GameObject mainMenuObjects;
+        public GameObject endScreenObjects;
 
         [Header("GAME INFO")]
         //[SerializeField] private GameMode gameMode = GameMode.OnePlayer;

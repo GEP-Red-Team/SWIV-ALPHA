@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CustomInput;
 using Data;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -145,7 +146,8 @@ namespace GameStates
         private void OnQuit()
         {
             //NOTE : this doesnt work in editor
-            Application.Quit();
+            //Application.Quit();
+            EditorApplication.isPlaying = false;
         }
 
         private void RotateSprites()

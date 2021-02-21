@@ -18,6 +18,10 @@ namespace GameStates
         private float beginResetTime = 0f;
         private float resetDuration = 1.5f;
 
+        
+        private bool checkPlayerWon = false;
+        private const int MAX_SCORE = 10000;
+
         public override void Start()
         {
             Debug.Log("START() :: PLAY STATE");
@@ -36,6 +40,7 @@ namespace GameStates
             // Register player callbacks.
             playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             playerController.OnPlayerHitCallback += OnPlayerHit;
+            playerController.OnEnemyHitCallback += OnEnemyHit;
 
             // Set the playstate the player belongs to.
             playerController.SetPlayState(this);
@@ -52,9 +57,13 @@ namespace GameStates
                 {
                     ResetPlayer();
                 }
-
             }
 
+            if (checkPlayerWon)
+            {
+                OnGameEnd();
+            }
+            
             if (InputManager.GetKeyDown(1, "pause"))
             {
                 Game.OnPause();
@@ -82,7 +91,7 @@ namespace GameStates
 
             if(Game.GameData.lives < 0)
             {
-                OnGameOver();
+                OnGameEnd();
             }
         }
 
@@ -102,9 +111,10 @@ namespace GameStates
             Game.GameData.scoreText.text = "Score " + Game.GameData.currentScore.ToString();
         }
 
-        private void OnGameOver()
+        private void OnGameEnd()
         {
-            Debug.Log("GAME OVER");
+            Game.SetState(new EndState(Game));
+            Debug.Log("GAME END");
         }
 
         private void BeginPlayerReset()
@@ -116,6 +126,14 @@ namespace GameStates
         private void ResetPlayer()
         {
             player.SetActive(true);
+        }
+
+        private void OnEnemyHit()
+        {
+            if (Game.GameData.currentScore >= MAX_SCORE)
+            {
+                checkPlayerWon = true;
+            }
         }
     }
 }

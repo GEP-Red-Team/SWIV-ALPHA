@@ -51,44 +51,29 @@ public class ShieldPowerup
 
     public void Update()
     {
-        if(active)
+        if (active)
         {
-            if(GetElapsedTimeSinceActivated() >= activeLifetime)
-            {
-                Deactivate();
-            }
+            if (GetElapsedTimeSinceActivated() >= activeLifetime) { Deactivate(); }
         }
     }
 
-    public void LateUpdate()
-    {
-        shieldGameObject.transform.position = playerGameObject.transform.position;
-    }
+    public void LateUpdate() { shieldGameObject.transform.position = playerGameObject.transform.position; }
 
     public void OnHit()
     {
         remainingHits--;
-        if (remainingHits == 0)
-        {
-            Deactivate();
-        }
+        if (remainingHits == 0) { Deactivate(); }
     }
 
-    public bool IsActive()
-    {
-        return active;
-    }
+    public bool IsActive() { return active; }
 
-    private float GetElapsedTimeSinceActivated()
-    {
-        return Time.time - madeActiveTime;
-    }
+    private float GetElapsedTimeSinceActivated() { return Time.time - madeActiveTime; }
 }
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject playObjects;
-    
+
     public float speed = 10f;
 
     public string fireInput = "shoot";
@@ -101,7 +86,9 @@ public class PlayerController : MonoBehaviour
     public int bulletPoolSize = 10;
 
     public delegate void OnPlayerHitDelegate();
+    public delegate void OnEnemyHit();
     public event OnPlayerHitDelegate OnPlayerHitCallback;
+    public event OnEnemyHit OnEnemyHitCallback;
 
     public float shieldPowerupObjectScaleOnPlayer = 2.5f;
     public float shieldPowerupObjectScaleInScene = 0.75f;
@@ -131,20 +118,18 @@ public class PlayerController : MonoBehaviour
     public void OnShotEnemy(Transform transform)
     {
         playState.AddPlayerScore(ENEMY_SCORE_VALUE);
-
+        OnEnemyHitCallback();
         // Should a powerup be dropped?
-        if (Random.Range(0,3) == 1)
+        if (Random.Range(0, 3) == 1)
         {
             // Which powerup should be dropped? There is only one implemented currently but a decision could be made here.
             GameObject powerup = Instantiate(shieldPowerupGameObject, transform.position, Quaternion.identity);
-            powerup.transform.localScale = new Vector3(shieldPowerupObjectScaleInScene, shieldPowerupObjectScaleInScene, shieldPowerupObjectScaleInScene);
+            powerup.transform.localScale = new Vector3(shieldPowerupObjectScaleInScene, shieldPowerupObjectScaleInScene,
+                shieldPowerupObjectScaleInScene);
         }
     }
 
-    public void SetPlayState(GameStates.PlayState state)
-    {
-        playState = state;
-    }
+    public void SetPlayState(GameStates.PlayState state) { playState = state; }
 
     // Start is called before the first frame update
     private void Start()
@@ -152,7 +137,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // Get screen extents.
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        screenBounds =
+            Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         // Get mesh extents.
         Mesh mesh = transform.GetComponent<MeshFilter>().mesh;
@@ -160,7 +146,7 @@ public class PlayerController : MonoBehaviour
         objectHeight = mesh.bounds.extents.y;
 
         // Initialize bullet pool.
-        for(int i = 0; i < bulletPoolSize; i++)
+        for (int i = 0; i < bulletPoolSize; i++)
         {
             bulletPool.Add(Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity));
             //bulletPool[i].transform.localScale = transform.localScale; // Bullet scale is applied seperately in the bullet prefab.
@@ -170,7 +156,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // Initialize powerups.
-        shieldPowerup = new ShieldPowerup(Instantiate(shieldPowerupGameObject), transform.localScale.x * shieldPowerupObjectScaleOnPlayer, gameObject);
+        shieldPowerup = new ShieldPowerup(Instantiate(shieldPowerupGameObject),
+            transform.localScale.x * shieldPowerupObjectScaleOnPlayer, gameObject);
     }
 
     // Update is called once per frame
@@ -182,10 +169,7 @@ public class PlayerController : MonoBehaviour
         // Fire if cooldown reached
         if (CustomInput.InputManager.GetKeyPressed(1, fireInput))
         {
-            if (CanFire())
-            {
-                Fire();
-            }
+            if (CanFire()) { Fire(); }
         }
 
         // Update powerups.
@@ -209,14 +193,11 @@ public class PlayerController : MonoBehaviour
         shieldPowerup.LateUpdate();
     }
 
-    private bool CanFire()
-    {
-        return (Time.time - lastFireTime) >= fireRate;
-    }
+    private bool CanFire() { return (Time.time - lastFireTime) >= fireRate; }
 
     private void Fire()
     {
-        if(!bulletPrefab)
+        if (!bulletPrefab)
         {
             Debug.LogError("A bullet game object needs to be assigned in the player controller.");
             return;
@@ -240,18 +221,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Bullet") || other.CompareTag("Enemy"))
+        if (other.CompareTag("EBullet") || other.CompareTag("Enemy"))
         {
-            if(!shieldPowerup.IsActive())
-            {
-                OnPlayerHitCallback();
-            }
+            if (!shieldPowerup.IsActive()) { OnPlayerHitCallback(); }
             else
             {
                 // Deactivate other bullet. This will work with the enemy's or global bullet pool.
             }
         }
-        else if(other.CompareTag("PowerupShield") && !shieldPowerup.IsActive())
+        else if (other.CompareTag("PowerupShield") && !shieldPowerup.IsActive())
         {
             shieldPowerup.Activate();
             Destroy(other.gameObject);
