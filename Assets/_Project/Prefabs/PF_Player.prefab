@@ -61,10 +61,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8896051167825165466, guid: a068bf2cf7b25804ab16de11957ffd5e, type: 3}
-  - {fileID: 6231023347082624160, guid: a068bf2cf7b25804ab16de11957ffd5e, type: 3}
-  - {fileID: -4660651839558579860, guid: a068bf2cf7b25804ab16de11957ffd5e, type: 3}
-  - {fileID: -6867524174320841699, guid: a068bf2cf7b25804ab16de11957ffd5e, type: 3}
+  - {fileID: 2100000, guid: e9323dc1c5271e14bb1518dc5498b6ce, type: 2}
+  - {fileID: 2100000, guid: 96d1dfe250f7cda4b90a6f72ac727c28, type: 2}
+  - {fileID: 2100000, guid: d232efdaa53bde447a296b9dca683a2d, type: 2}
+  - {fileID: 2100000, guid: c0746b18ec73b6342aa785a103524732, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1675445b6095e84db6d511a29c03b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playObjects: {fileID: 0}
   speed: 10
   fireInput: shoot
   fireRate: 1
@@ -120,7 +121,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1007439657484188023, guid: 872ab848037eba041be7bbbed8c8bbc0,
     type: 3}
   bulletPoolSize: 10
-  shieldPowerupObjectScale: 2.5
+  shieldPowerupObjectScaleOnPlayer: 2.5
+  shieldPowerupObjectScaleInScene: 0.75
+  shieldRarity: 4
   shieldPowerupGameObject: {fileID: 0}
 --- !u!65 &5673324503453212040
 BoxCollider:

@@ -157,13 +157,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        direction = new Vector2(InputManager.GetAxis(1,"horizontal"), InputManager.GetAxis(1,"vertical"));
-
-        // Fire if cooldown reached
-        if (CustomInput.InputManager.GetKeyPressed(1, fireInput))
+        if(!playState.IsResettingPlayer())
         {
-            if (CanFire()) { Fire(); }
+            //direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            direction = new Vector2(InputManager.GetAxis(1, "horizontal"), InputManager.GetAxis(1, "vertical"));
+
+            // Fire if cooldown reached
+            if (CustomInput.InputManager.GetKeyPressed(1, fireInput))
+            {
+                if (CanFire()) { Fire(); }
+            }
+        }
+        else 
+        {
+            direction = new Vector2(0f, 0f);
         }
 
         // Update powerups.

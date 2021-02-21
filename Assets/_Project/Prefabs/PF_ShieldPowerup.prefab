@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3981186224453187942}
   - component: {fileID: 5589823151706949829}
   m_Layer: 0
-  m_Name: PF_Shield_Powerup
+  m_Name: PF_ShieldPowerup
   m_TagString: PowerupShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0746b18ec73b6342aa785a103524732, type: 2}
+  - {fileID: 2100000, guid: b7c9d283ed3b19b478c57d19bbbfeb1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
