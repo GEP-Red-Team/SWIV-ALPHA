@@ -31,6 +31,11 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("PowerupShield"))
+        {
+            return;
+        }
+
         if(other.CompareTag("Enemy"))
         {
             // Deactivate enemy.

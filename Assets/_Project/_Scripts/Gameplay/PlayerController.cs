@@ -32,6 +32,7 @@ public class ShieldPowerup
         madeActiveTime = Time.time;
         remainingHits = 4;
         shieldGameObject.SetActive(true);
+        shieldGameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(1f, 1f, 0.2f, 0.4f));
     }
 
     public void Deactivate()
@@ -84,6 +85,8 @@ public class PlayerController : MonoBehaviour
     public float shieldPowerupObjectScaleOnPlayer = 2.5f;
     public float shieldPowerupObjectScaleInScene = 0.75f;
 
+    public int shieldRarity = 4;
+
     private Rigidbody rb;
     private Vector2 direction;
 
@@ -111,7 +114,7 @@ public class PlayerController : MonoBehaviour
         playState.AddPlayerScore(ENEMY_SCORE_VALUE);
         OnEnemyHitCallback();
         // Should a powerup be dropped?
-        if (Random.Range(0, 3) == 1)
+        if (Random.Range(0, shieldRarity) == 1)
         {
             // Which powerup should be dropped? There is only one implemented currently but a decision could be made here.
             GameObject powerup = Instantiate(shieldPowerupGameObject, transform.position, Quaternion.identity);
