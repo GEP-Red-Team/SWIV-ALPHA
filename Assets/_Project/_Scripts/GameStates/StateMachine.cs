@@ -14,6 +14,7 @@ namespace GameStates
         public GameData GameData { get => gameData; set => gameData = value; }
         public MenuObjects menuObjects = default;
         public PauseObjects pauseObjects = default;
+        public LoseObjects loseObjects = default;
 
         private void OnEnable()
         {

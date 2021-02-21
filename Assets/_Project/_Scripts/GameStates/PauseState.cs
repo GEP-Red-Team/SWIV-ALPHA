@@ -20,6 +20,7 @@ namespace GameStates
             PauseObjects.resumeButton.onClick.AddListener(OnResume);
             PauseObjects.restartButton.onClick.AddListener(OnRestart);
             PauseObjects.mainMenuButton.onClick.AddListener(OnMenu);
+            PauseObjects.mainMenuButton.onClick.AddListener(OnMenu);
         }
         public override void Update()
         {
